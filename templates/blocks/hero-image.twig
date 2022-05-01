@@ -1,0 +1,10 @@
+{% set image = Image(fields.hero_image) %}
+
+{% include '@components/hero-bg-image/hero-bg-image.twig' with {
+  'hero_image': image.src,
+  'image_alt': image.alt,
+  'hero_title': fields.title,
+  'summary': fields.summary,
+  'hero_button_text': fields.button_link.title,
+  'hero_button_url': fields.button_link.url,
+} %}

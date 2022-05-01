@@ -8,10 +8,12 @@ the creation of discrete, reusable UI elements. Urbi is heavily integrated with
 [Pattern Lab](http://patternlab.io/), allowing WordPress and Pattern Lab
 to share the same markup.
 
+**Urbi is inspired and forked by forumone's gesso theme.**
+
 For more information, view the
-[Urbi WordPress GitHub repo](https://github.com/urbaninsight/urbi-wp).
+[Gesso WordPress GitHub repo](https://github.com/forumone/gesso-wp).
 To submit bug reports or feature requests, visit the
-[Urbi WordPress issue queue](https://github.com/urbaninsight/urbi-wp/issues).  Also available for [Drupal](https://github.com/urbaninsight/urbi).
+[Gesso WordPress issue queue](https://github.com/forumone/gesso-wp/issues).  Also available for [Drupal](https://github.com/forumone/gesso).
 
 ## Global Prerequisites
 
@@ -326,7 +328,6 @@ the following command in the theme folder.
 npm run component
 ```
 
-
 ### Build Artifacts
 
 By default, the compiled Pattern Lab and Sass files (e.g., /pattern-lab/
@@ -388,13 +389,14 @@ code.
 See the README.md file in the /js directory for details on included scripts
 (e.g., mobile menu, primary menu, etc.).
 
-## Contributing
+### Example component designed for Gutenberg Block
 
-Please use the Github issue queue (https://github.com/urbaninsight/urbi-wp/issues) for
-discussion, bug reports, feature requests, etc.
-
-Submitted pull requests should be against the release candidate branch, `4.x-RC`.
-
-## Maintainers
-
-The Urbi theme for WordPress is maintained by [Corey Lafferty](https://github.com/coreylafferty), [Lindsey DiNapoli](https://github.com/cssgirl), [Karen Kitchens](https://github.com/karenkitchens) and [Elvis Morales](https://github.com/elvismdev).
+Text and image component is designed to be used for ACF + Gutenberg Block.
+You may find a Pattern Lab pattern on
+```
+/source/_patterns/04-components/text-and-image
+```
+and twig template on
+```
+/templates/blocks/text-and-image.twig
+```

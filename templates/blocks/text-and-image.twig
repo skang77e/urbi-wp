@@ -1,0 +1,13 @@
+{% set image = Image(fields.image) %}
+
+{% include '@components/text-and-image/text-and-image.twig' with {
+  'media': {
+    src: image.src,
+    alt: image.alt
+  },
+  'headline': fields.headline,
+  'cta_link': fields.cta_link,
+  'url': fields.cta_link.url,
+  'title': fields.cta_link.title,
+  'text_content': fields.description
+} %}

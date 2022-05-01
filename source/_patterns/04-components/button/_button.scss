@@ -1,0 +1,55 @@
+// @file
+// Styles for Button.
+
+.button {
+  @include button();
+  margin-bottom: rem(urbi-spacing(1));
+
+  & + & {
+    margin-left: rem(urbi-spacing(1)); // LTR
+
+    @if $support-for-rtl {
+      [dir='rtl'] & {
+        margin-left: 0;
+        margin-right: rem(urbi-spacing(1));
+      }
+    }
+  }
+}
+
+.button--danger {
+  background-color: urbi-color(button, danger, background);
+  color: urbi-color(button, danger, text);
+
+  &:hover,
+  &:focus {
+    background-color: urbi-color(button, danger, background-hover);
+    color: urbi-color(button, danger, text-hover);
+  }
+
+  &:active {
+    background-color: urbi-color(button, danger, background-active);
+    color: urbi-color(button, danger, text-active);
+  }
+}
+
+.button--secondary {
+  @include button(
+    $color-background: urbi-color(button, secondary, background),
+    $color-text: urbi-color(button, secondary, text),
+    $color-background-hover: urbi-color(button, secondary, background-hover),
+    $color-text-hover: urbi-color(button, secondary, text-hover),
+    $color-background-active: urbi-color(button, secondary, background-active),
+    $color-text-active: urbi-color(button, secondary, text-active)
+  );
+}
+
+.button--large {
+  font-size: rem(urbi-font-size(3));
+  padding: rem(urbi-spacing(2)) rem(urbi-spacing(5));
+}
+
+.button--small {
+  font-size: rem(urbi-font-size(1));
+  padding: rem(urbi-spacing(0.5)) rem(urbi-spacing(1));
+}

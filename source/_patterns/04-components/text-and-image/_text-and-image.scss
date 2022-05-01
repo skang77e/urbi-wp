@@ -1,0 +1,16 @@
+// @file
+// Component: Text And Image
+
+.text-and-image{
+  display: flex;
+}
+
+.text__body,
+.image{
+  flex: 1;
+}
+
+.image{
+  background-repeat: no-repeat;
+  background-size: cover;
+}

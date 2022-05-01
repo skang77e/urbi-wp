@@ -1,0 +1,104 @@
+/// Fetch nested keys
+/// @param {Map} $map - Map
+/// @param {Arglist} $keys - Keys to fetch
+/// @return {*}
+
+@function map-deep-get($map, $keys...) {
+  $arg-type: type-of($map);
+
+  @if ($arg-type != map) {
+    @error "A valid sass map is required as the first argument. Argument #{$map} is type #{$arg-type}";
+  }
+
+  @each $key in $keys {
+    @if (map-has-key($map, $key)) {
+      $map: map-get($map, $key);
+    } @else {
+      @warn "Key `#{$key}` not found in map";
+    }
+  }
+
+  @return $map;
+}
+
+// Retrieve Main Theme Key
+@function urbi-get-map($map-key, $keys...) {
+  @return map-deep-get($urbi, $map-key, $keys...);
+}
+
+// Get Constrain
+@function urbi-constrain($keys...) {
+  @return urbi-get-map(constrains, $keys...);
+}
+
+// Get Breakpoint
+@function urbi-breakpoint($keys...) {
+  @return urbi-get-map(breakpoints, $keys...);
+}
+
+// Get Brand Palette
+@function urbi-brand($keys...) {
+  @return urbi-get-map(palette, brand, $keys...);
+}
+
+// Get Grayscale Palette
+@function urbi-grayscale($keys...) {
+  @return urbi-get-map(palette, grayscale, $keys...);
+}
+
+// Get Color
+@function urbi-color($keys...) {
+  @return urbi-get-map(colors, $keys...);
+}
+
+// Get Font Family
+@function urbi-font-family($ff-type) {
+  @return unquote(urbi-get-map(typography, font-family, $ff-type, stack));
+}
+
+// Get Base Font Size
+@function urbi-base-font-size() {
+  @return urbi-get-map(typography, base-font-size);
+}
+
+// Get Font Size
+@function urbi-font-size($keys...) {
+  @return urbi-get-map(typography, font-size, $keys...);
+}
+
+// Get Font Weight
+@function urbi-font-weight($keys...) {
+  @return urbi-get-map(typography, font-weight, $keys...);
+}
+
+// Get Line Height
+@function urbi-line-height($keys...) {
+  @return urbi-get-map(typography, line-height, $keys...);
+}
+
+// Get Z Index
+@function urbi-z-index($keys...) {
+  @return urbi-get-map(z-index, $keys...);
+}
+
+// Get spacing
+@function urbi-spacing($keys...) {
+  @return urbi-get-map(spacing, $keys...);
+}
+
+// Get Site margins
+@function urbi-site-margins($keys...) {
+  @return urbi-get-map(site-margins, $keys...);
+}
+
+@function urbi-duration($keys...) {
+  @return urbi-get-map(transitions, duration, $keys...);
+}
+
+@function urbi-easing($keys...) {
+  @return unquote(urbi-get-map(transitions, ease, $keys...));
+}
+
+@function urbi-box-shadow($keys...) {
+  @return unquote(urbi-get-map(box-shadow, $keys...));
+}

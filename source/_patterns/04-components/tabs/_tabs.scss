@@ -1,0 +1,109 @@
+// @file
+// Styles for Tabs.
+@use "sass:math";
+
+$tab-background-color: urbi-color(ui, generic, background-light) !default;
+$tab-background-color-active: urbi-color(
+  ui,
+  generic,
+  background-dark
+) !default;
+$tab-background-color-disabled: urbi-color(
+  ui,
+  generic,
+  background-light
+) !default;
+$tab-background-color-hover: urbi-color(ui, generic, background) !default;
+$tab-border-color: urbi-color(ui, generic, border) !default;
+$tab-border-color-active: urbi-color(ui, generic, border) !default;
+$tab-border-color-disabled: urbi-color(ui, generic, border) !default;
+$tab-border-color-hover: urbi-color(ui, generic, border) !default;
+$tab-border-radius: 0 !default;
+$tab-border-width: 0 !default;
+$tab-text-color: urbi-color(text, on-light) !default;
+$tab-text-color-active: urbi-color(text, on-dark) !default;
+$tab-text-color-disabled: urbi-color(ui, generic, text-light) !default;
+$tab-text-color-hover: urbi-color(text, on-light) !default;
+$tab-font-size: urbi-base-font-size() !default;
+
+.tabs {
+  @include clearfix;
+}
+
+.tabs__items {
+  @include list-clean;
+  display: flex;
+  flex-direction: column;
+
+  @include breakpoint(urbi-breakpoint(tablet)) {
+    flex-direction: row;
+  }
+
+  @media print {
+    display: none;
+  }
+}
+
+.tabs__item {
+  &:first-child {
+    .tabs__link {
+      border-bottom-left-radius: $tab-border-radius;
+      border-left: 0;
+      border-top-left-radius: $tab-border-radius;
+    }
+  }
+
+  &:last-child {
+    .tabs__link {
+      border-bottom-right-radius: $tab-border-radius;
+      border-top-right-radius: $tab-border-radius;
+    }
+  }
+
+  &.is-active {
+    z-index: 1;
+  }
+
+  &:focus-within,
+  &:hover {
+    z-index: 2;
+  }
+}
+
+.tabs__link {
+  @include button(
+    $tab-background-color,
+    $tab-text-color,
+    $tab-border-color,
+    $tab-background-color-hover,
+    $tab-text-color-hover,
+    $tab-border-color-hover,
+    $tab-background-color-active,
+    $tab-text-color-active,
+    $tab-background-color-disabled,
+    $tab-border-color-disabled,
+    $tab-text-color-disabled,
+    $tab-border-radius,
+    $tab-border-width,
+    $tab-font-size
+  );
+  border-left: 1px solid $tab-border-color;
+  display: block;
+  font-family: urbi-font-family(system);
+  font-size: rem(urbi-font-size(2));
+  line-height: math.div(17px, urbi-font-size(2));
+  margin: 0;
+  padding: rem(urbi-spacing(1)) rem(urbi-spacing(2));
+
+  &.is-active {
+    background-color: $tab-background-color-active;
+    border-color: $tab-border-color-active;
+    color: $tab-text-color-active;
+
+    &:hover {
+      background-color: $tab-background-color-active;
+      border-color: $tab-border-color-active;
+      color: $tab-text-color-active;
+    }
+  }
+}

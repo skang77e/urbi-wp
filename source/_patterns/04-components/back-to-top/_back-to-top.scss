@@ -1,0 +1,48 @@
+.back-to-top {
+  display: none;
+
+  @include breakpoint(urbi-breakpoint(mobile-lg)) {
+    align-items: center;
+    background-color: urbi-color(button, back-to-top, background);
+    border-radius: 50%;
+    bottom: rem(urbi-spacing(2.5));
+    color: urbi-color(button, back-to-top, color);
+    display: flex;
+    height: rem(70px);
+    justify-content: center;
+    position: fixed;
+    right: rem(urbi-spacing(2.5));
+    transition-duration: urbi-duration(short);
+    transition-property: background-color, color, opacity;
+    transition-timing-function: urbi-easing(ease-in);
+    width: rem(70px);
+
+    &:visited {
+      color: urbi-color(button, back-to-top, color);
+    }
+
+    &:hover,
+    &:focus {
+      background-color: urbi-color(button, back-to-top, background-hover);
+      color: urbi-color(button, back-to-top, color-hover);
+    }
+
+    &[aria-hidden='true'] {
+      opacity: 0;
+    }
+  }
+}
+
+// Ensure that the button is visible in Pattern Lab.
+@if $pattern-lab-overrides {
+  // stylelint-disable-next-line selector-max-id
+  #components-back-to-top .back-to-top {
+    opacity: 1;
+  }
+}
+
+.back-to-top__icon {
+  fill: currentColor;
+  height: rem(22px);
+  width: rem(35px);
+}

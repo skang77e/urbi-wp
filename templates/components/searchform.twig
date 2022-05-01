@@ -1,0 +1,7 @@
+{% include '@components/searchform/searchform.twig' with {
+	'action': site.url,
+	'label': 'Search',
+	'placeholder': __('To search, type and hit enter.', 'urbi'),
+	'button_label': __('Search', 'urbi'),
+	'search_keyword': request.get.s
+} %}

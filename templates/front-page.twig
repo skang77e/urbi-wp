@@ -1,0 +1,18 @@
+{% extends 'base.twig' %}
+
+{% block content %}
+  <!-- Provided by templates/front-page.twig -->
+  {% embed '@layouts/content/content.twig' with {
+    'has_constrain': true
+  } %}
+    {% block content %}
+		{% if fn('is_home') == true %}
+			{% include 'templates/components/loop.twig' %}
+			{% include '@components/pager/pager.twig' %}
+		{% endif %}
+		{% if fn('is_home') == false %}
+			{{ post.content }}
+		{% endif %}
+    {% endblock %}
+  {% endembed %}
+{% endblock %}

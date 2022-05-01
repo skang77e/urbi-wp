@@ -1,0 +1,37 @@
+// @file
+// Styles for accessible skiplinks.
+
+.skiplinks {
+  display: flex;
+  font-family: urbi-font-family(system);
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  z-index: 9999;
+}
+
+.skiplinks__link,
+.skiplinks__link:visited,
+.skiplinks__link:focus {
+  background-color: urbi-color(ui, generic, background-dark);
+  border: 2px solid urbi-color(ui, generic, border-light);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-top: 0;
+  box-shadow: urbi-box-shadow(2);
+  color: urbi-color(text, on-dark);
+  display: inline-block;
+  font-weight: bold;
+  line-height: urbi-line-height(tight);
+  margin: 0;
+  outline: 0;
+  padding: rem(urbi-spacing(1));
+  text-align: center;
+  text-decoration: none;
+}
+
+// Remove :focus styles for skiplink targets.
+// stylelint-disable-next-line selector-max-id
+#main:focus {
+  outline: 0;
+}

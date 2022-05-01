@@ -1,0 +1,12 @@
+// @file
+// HTML styles.
+@use "sass:math";
+
+html {
+  box-sizing: border-box;
+  font-family: urbi-font-family(primary);
+  font-size: 100% * (math.div(urbi-base-font-size(), 16px));
+  line-height: urbi-line-height(base);
+  min-height: 100%;
+  text-size-adjust: 100%;
+}

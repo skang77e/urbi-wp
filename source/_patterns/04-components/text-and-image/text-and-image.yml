@@ -1,0 +1,7 @@
+---
+headline: 'Text and Image Headline'
+url: '#'
+cta_link: true
+media: { src: 'https://picsum.photos/id/1015/800/600', alt: 'Image ALT' }
+text_content: |-
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et accumsan augue. Morbi non laoreet lorem.</p>

@@ -1,0 +1,51 @@
+// @file
+// Blockquote styles.
+
+$blockquote-cite-divider-color: urbi-color(ui, generic, border);
+
+blockquote {
+  @include display-text-style(blockquote);
+  margin: 0 0 rem(urbi-spacing(5));
+
+  // Add top margin when blockquote is preceded by other elements
+  * + & {
+    margin-top: rem(urbi-spacing(5));
+  }
+
+  p {
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+
+    &::before {
+      content: '\201C';
+    }
+
+    &::after {
+      content: '\201D';
+    }
+  }
+
+  cite {
+    display: block;
+    margin-top: rem(urbi-spacing(2));
+    text-align: right;
+
+    em {
+      border-left: 1px solid $blockquote-cite-divider-color;
+      font-weight: urbi-font-weight(regular);
+      margin-left: rem(urbi-spacing(0.5));
+      padding-left: rem(urbi-spacing(1));
+    }
+  }
+
+  :last-child {
+    margin-bottom: 0;
+  }
+
+  @media print {
+    page-break-inside: avoid;
+  }
+}

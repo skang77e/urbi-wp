@@ -332,13 +332,12 @@ npm run component
 
 Text and image component is designed to be used for ACF + Gutenberg Block.
 You may find a Pattern Lab pattern on
-```
-/source/_patterns/04-components/text-and-image
-```
+
+[/source/_patterns/04-components/text-and-image](https://github.com/skang77e/urbi-wp/tree/main/source/_patterns/04-components/text-and-image)
+
 and twig template on
-```
-/templates/blocks/text-and-image.twig
-```
+
+[/templates/blocks/text-and-image.twig](https://github.com/skang77e/urbi-wp/tree/main/templates/blocks/)
 
 ### Build Artifacts
 

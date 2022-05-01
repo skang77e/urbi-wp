@@ -328,6 +328,18 @@ the following command in the theme folder.
 npm run component
 ```
 
+### Example component designed for Gutenberg Block
+
+Text and image component is designed to be used for ACF + Gutenberg Block.
+You may find a Pattern Lab pattern on
+```
+/source/_patterns/04-components/text-and-image
+```
+and twig template on
+```
+/templates/blocks/text-and-image.twig
+```
+
 ### Build Artifacts
 
 By default, the compiled Pattern Lab and Sass files (e.g., /pattern-lab/
@@ -388,15 +400,3 @@ code.
 
 See the README.md file in the /js directory for details on included scripts
 (e.g., mobile menu, primary menu, etc.).
-
-### Example component designed for Gutenberg Block
-
-Text and image component is designed to be used for ACF + Gutenberg Block.
-You may find a Pattern Lab pattern on
-```
-/source/_patterns/04-components/text-and-image
-```
-and twig template on
-```
-/templates/blocks/text-and-image.twig
-```

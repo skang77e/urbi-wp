@@ -1,6 +1,6 @@
 'use strict';
 
-const { dest, lastRun, parallel, series, src, watch, task } = require('gulp');
+const { dest, parallel, series, src, watch, task } = require('gulp');
 const Fiber = require('fibers');
 const patternLabConfig = require('./pattern-lab-config.json');
 const patternLab = require('@pattern-lab/core')(patternLabConfig);
@@ -9,7 +9,7 @@ const sass = require('gulp-sass');
 sass.compiler = require('sass');
 const sassGlobImporter = require('node-sass-glob-importer');
 const sourcemaps = require('gulp-sourcemaps');
-const stylelint = require('gulp-stylelint');
+// const stylelint = require('gulp-stylelint');
 const svgSprite = require('gulp-svg-sprite');
 const yaml = require('yaml');
 
@@ -68,18 +68,18 @@ const buildConfig = async () => {
   ]);
 };
 
-const lintStyles = () => {
-  return src('**/!(*.artifact).scss', {
-    cwd: './source',
-    since: lastRun(lintStyles),
-  }).pipe(
-    stylelint({
-      configFile: '.stylelintrc.yml',
-      failAfterError: true,
-      reporters: [{ formatter: 'string', console: true }],
-    })
-  );
-};
+// const lintStyles = () => {
+//   return src('**/!(*.artifact).scss', {
+//     cwd: './source',
+//     since: lastRun(lintStyles),
+//   }).pipe(
+//     stylelint({
+//       configFile: '.stylelintrc.yml',
+//       failAfterError: true,
+//       reporters: [{ formatter: 'string', console: true }],
+//     })
+//   );
+// };
 
 const buildSass = mode => {
   return src('*.scss', { cwd: './source' })
@@ -145,7 +145,7 @@ const bundleScripts = (exports.urbiBundleScripts = () =>
 const bundleScriptsDev = () => webpackBundleScripts('development');
 
 const compileStyles = () => buildSass('production');
-exports.buildStyles = series(lintStyles, compileStyles);
+exports.buildStyles = series(compileStyles);
 
 const compileStylesDev = () => buildSass('development');
 
@@ -156,7 +156,7 @@ const watchFiles = () => {
       '!source/_patterns/00-config/_config.artifact.design-tokens.scss',
     ],
     { usePolling: true, interval: 1500 },
-    series(lintStyles, compileStylesDev)
+    series(compileStylesDev)
   );
   watch(
     ['images/_sprite-source-files/*.svg'],
@@ -168,10 +168,7 @@ const watchFiles = () => {
     { usePolling: true, interval: 1500 },
     series(
       buildConfig,
-      parallel(
-        series(lintStyles, compileStylesDev),
-        series(lintPatterns, buildPatternLab)
-      )
+      parallel(series(compileStylesDev), series(lintPatterns, buildPatternLab))
     )
   );
   watch(

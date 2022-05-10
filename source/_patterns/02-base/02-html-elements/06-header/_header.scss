@@ -2,3 +2,15 @@
 // Header element styles.
 
 // header {}
+.l-header-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .l-header{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+  }
+}

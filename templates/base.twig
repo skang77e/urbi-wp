@@ -15,30 +15,30 @@
 
 		{# set the content of the site as a variable to be passed to site-container.twig #}
 		{% set site_content %}
+			<div class="l-header-container">
+				{% embed '@layouts/header/header.twig' with {
+				'has_constrain': false
+				} %}
+				{% block content %}
+					{% include '@components/site-name/site-name.twig' with {
+					'url': site.url,
+					'site_name': site.title
+					} %}
+				{% endblock  %}
+				{% endembed %}
 
-		  {% embed '@layouts/header/header.twig' with {
-			'has_constrain': true
-		  } %}
-			{% block content %}
-			  {% include '@components/site-name/site-name.twig' with {
-				'url': site.url,
-				'site_name': site.title
-			  } %}
-			{% endblock  %}
-		  {% endembed %}
-
-		  {% embed '@layouts/region/region.twig' with {
-			'region_name': 'navigation',
-			'has_constrain': true
-		  } %}
-			{% block content %}
-			  {% include '@components/menu/menu.twig' with {
-				'items': primary_menu.items,
-				'menu_name': 'main'
-			  } %}
-			{% endblock  %}
-		  {% endembed %}
-
+				{% embed '@layouts/region/region.twig' with {
+				'region_name': 'navigation',
+				'has_constrain': true
+				} %}
+				{% block content %}
+					{% include '@components/menu/menu.twig' with {
+					'items': primary_menu.items,
+					'menu_name': 'main'
+					} %}
+				{% endblock  %}
+				{% endembed %}
+			</div>
 		  <main id="main" class="main" role="main" tabindex="-1">
 			{% embed '@layouts/region/region.twig' with {
 			  'region_name': 'preface',

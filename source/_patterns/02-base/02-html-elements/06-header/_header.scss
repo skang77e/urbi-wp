@@ -10,7 +10,10 @@
   .l-header{
     display: flex;
     justify-content: space-between;
-    width: 100%;
     align-items: center;
+
+    @include breakpoint-max(urbi-breakpoint(mobile-menu), true){
+      width: 100%;
+    }
   }
 }
